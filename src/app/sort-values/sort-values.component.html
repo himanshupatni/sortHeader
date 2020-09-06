@@ -1,0 +1,69 @@
+<div class="container" style="background-color: gray; padding: 10px">
+  <table
+    style="background-color: gray; width: 100%"
+    matSort
+    (matSortChange)="sortData($event)"
+  >
+    <tr style="background-color: white">
+      <th style="justify-content: center;" mat-sort-header="Departure">Departure</th>
+      <th style="justify-content: center;" mat-sort-header="Duration">Duration</th>
+      <th style="justify-content: center;" mat-sort-header="Arrival">Arrival</th>
+      <th style="justify-content: center;" mat-sort-header="Price">Price</th>
+    </tr>
+  </table>
+  <div
+    style="
+      background-color: white;
+      margin: 10px 0px 10px 0px;
+      padding-left: 5px;
+      border-radius: 10px;
+      display: flex;
+    "
+    *ngFor="let flight of sortedData"
+  >
+    <!-- main div -->
+    <div style="padding: 15px; width: 100%;" class="row">
+      <!--  -->
+      <div class="col-3">
+      <div style="display: flex">
+        <img src={{flight.logo}} alt="image " height="50px" width="50px" />
+        <p style="color: gray;">{{ flight.company }}</p>
+      </div>
+
+
+      <div style="display: flex">
+
+          <div>
+            <p>{{ flight.departureCity }} {{ flight.departureStateCoun }}</p>
+            <h4>{{ flight.departureTime }}</h4>
+          </div>
+
+      </div>
+      <div style="    font-size: 13px;
+      color: gray;">Partially Refundable</div>
+    </div>
+    <div class="col-3 center-align">
+
+      {{flight.duration}}
+    </div>
+    <div class="col-3 ">
+      <div class="flex-center">
+      <p>{{flight.arrivalCity}}</p><p style="font-size: 13px;color:gray;"> {{ flight.arrivalStateCoun}}</p>
+    </div>
+    <h4 class="center-text-align">{{ flight.arrivalTime }}</h4>
+
+    </div>
+    <div class="col-3">
+      <div class="row">
+        <div class="col-6">
+          <h3>₹{{flight.price}}</h3>
+          <p style="font-size: 13px;color:gray;">No Cost EMI from</p><p style="font-size: 13px;">₹{{flight.emi}}</p>
+        </div>
+        <div class="col-6 center-align" >
+          <button class="btn btn-primary" style="width: 100%;"> BOOK</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
